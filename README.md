@@ -14,7 +14,7 @@ mongodb://localhost:27017/oasisdb
 ```
 
 ##Configurar las variables de entorno
-Renombrar el archivo __.env.template__a__.env__
+Renombrar el archivo __.env.template __.env
 
 * MongoDB URL Local:
 ```
