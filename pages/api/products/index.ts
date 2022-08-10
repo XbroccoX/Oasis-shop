@@ -26,5 +26,7 @@ const getProducts = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 
     await db.disconnect();
 
+    return res.status(400).json({ message: 'Bad Request' })
+
 
 } 
