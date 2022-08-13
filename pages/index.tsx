@@ -1,23 +1,30 @@
 import type { NextPage } from 'next'
 import Typography from '@mui/material/Typography'
-import Grid from '@mui/material/Grid'
 import { ShopLayout } from '../components/layout'
-import { initialData } from '../database/products';
-import CardMedia from '@mui/material/CardMedia'
-import { Card, CardActionArea } from '@mui/material';
 import { ProductList } from '../components/products';
+import { useProducts } from '../hooks';
+import { FullScreenLoading } from '../components/ui';
 
 
-const Home: NextPage = () => {
+const HomePage: NextPage = () => {
+
+  const { products, isLoading, isError } = useProducts('/products');
+
+
   return (
-    <ShopLayout title={'Oasis-Shop - Home'} pageDescription={'Encuentra los mejores productos usados Aqui en Oasis Shop'}>
-      <Typography variant="h1" component='h1' >Home</Typography>
+    <ShopLayout title={'Oasis-Shop - HomePage'} pageDescription={'Encuentra los mejores productos usados Aqui en Oasis Shop'}>
+      <Typography variant="h1" component='h1' >HomePage</Typography>
       <Typography variant="h2" sx={{ marginBottom: 1 }} >Todos los productos</Typography>
-
-      <ProductList products={initialData.products as any} />
+      {
+        isLoading
+          ? <FullScreenLoading />
+          : !isError
+            ? <ProductList products={products} />
+            : <h1>Error de carga de datos...</h1>
+      }
 
     </ShopLayout>
   )
 }
 
-export default Home
+export default HomePage

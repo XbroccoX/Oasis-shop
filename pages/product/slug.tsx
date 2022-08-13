@@ -26,7 +26,7 @@ const ProductPage = () => {
                             <Typography variant="subtitle2" >Cantidad</Typography>
                             <ItemCounter />
                             <SizeSelector
-                                // selectedSize={product.sizes[0]}
+                                selectedSize={product.sizes[0]}
                                 sizes={product.sizes} />
                         </Box>
 
